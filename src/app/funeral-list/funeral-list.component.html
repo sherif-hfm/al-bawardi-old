@@ -1,0 +1,31 @@
+<div style="width: 100%;">
+  <div class="cards-container">
+    <div class="card" *ngFor="let card of funeralList" >
+      <div style="text-align:center" *ngIf="card.Total > 0"  >
+        <div>
+          صلاة <span class="number">{{card.prayerName}}</span>
+        </div>
+        <div>
+          عدد الجنائز <span class="number">{{toArabicNum(card.Total)}}</span>
+        </div>
+        <div class="info-container">
+          <div class="info" *ngIf="card.M > 0"> 
+            <div>رجال</div>
+            <div class="number">{{toArabicNum(card.M)}}</div>
+          </div>
+          <div class="info" *ngIf="card.F> 0">
+            <div>نساء</div>
+            <div class="number">{{toArabicNum(card.F)}}</div>
+          </div>
+          <div class="info" *ngIf="(card.B + card.G) > 0">
+            <div>اطفال</div>
+            <div class="number">{{toArabicNum(card.B + card.G)}}</div>
+          </div>
+        </div>
+        <div>
+          <div>عرض التفاصيل</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

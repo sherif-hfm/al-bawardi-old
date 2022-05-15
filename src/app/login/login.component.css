@@ -1,0 +1,30 @@
+.container{
+    width: 100%;
+}
+
+.cards-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card{
+width: 400px;
+height: 300px;
+border-style:solid ;
+border-width:1px ;
+margin: 20px;
+background-color:rgb(234, 247, 213);
+font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+}
+.form{
+
+}
+.formInput{
+
+}
+.formButtons{
+
+}

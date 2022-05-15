@@ -1,0 +1,35 @@
+.container{
+    width: 100%;
+}
+.details{
+    width: 50%;
+    margin: auto;    
+}
+.dataGrid{
+    
+}
+.gridHeader{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+   
+}
+
+.gridHeadercolumn{
+    border-style:solid;
+    border-width:1px ;
+}
+
+.gridDataRow{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+
+}
+.gridDatacolumn{
+    border-style:solid;
+    border-width:1px ;
+    
+}
+.rowButtons{
+    border-style:solid;
+    border-width:1px ;
+}

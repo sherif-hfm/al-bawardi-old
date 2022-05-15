@@ -1,0 +1,21 @@
+
+<div class="container">
+    <div class="cards-container">
+        <div class="card">
+            <div class="form" [formGroup]="loginFrom">
+                <div class="formInput">
+                    <label>اسم المستخدم</label>
+                    <input name="userLogin" type="text" formControlName="userLogin" value="user1">
+                </div>
+                <div class="formInput">
+                    <label>كلمة المرور</label>
+                    <input name="userLogin" type="password" formControlName="password" value="123">
+                </div>
+                <!-- <p>Form Status: {{ loginFrom.status }}</p> -->
+                <div class="formButtons">
+                    <button [disabled]="loginFrom.status == 'INVALID'" (click)="login()">دخول</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
