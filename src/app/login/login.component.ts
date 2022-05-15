@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,FormArray,FormBuilder,Validators, ValidationErrors  } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService} from '../auth.service';
+import { AuthService} from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(info).subscribe({
       next:(data:any)=>{
-       console.log('ok');
+       this.authService.isAuth=true;
        this.router.navigate(['/admin']);
       },
       error:(err:any)=>{

@@ -22,8 +22,8 @@
                 <div class="gridDataRow" *ngFor="let funeral of funeralList">
                     <div class="gridDatacolumn" >{{funeral.date}}</div>
                     <div class="gridDatacolumn" >{{funeral.deadName}}</div>
-                    <div class="gridDatacolumn" >{{getSexDesc(funeral.sex)}}</div>
-                    <div class="gridDatacolumn" >{{getPrayerDesc(funeral.prayerId)}}</div>
+                    <div class="gridDatacolumn" >{{dictionary.getSexDesc(funeral.sex)}}</div>
+                    <div class="gridDatacolumn" >{{dictionary.getPrayerDesc(funeral.prayerId)}}</div>
                     <div class="rowButtons">
                         <button (click)="edit(funeral.id)">تعديل</button>
                         <button (click)="delete(funeral.id)">حذف</button>

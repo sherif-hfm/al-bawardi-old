@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,FormArray,FormBuilder,Validators, ValidationErrors  } from '@angular/forms';
 
-import { FuneralService} from '../funeral.service';
-import { ArabicNumsService} from '../arabic-nums.service';
-import { UmalquraCalendarService} from '../umalqura-calendar.service';
-import { AuthService} from '../auth.service';
+import { FuneralService} from '../services/funeral.service';
+import { ArabicNumsService} from '../services/arabic-nums.service';
+import { UmalquraCalendarService} from '../services/umalqura-calendar.service';
+import { AuthService} from '../services/auth.service';
+import { DictionaryService} from '../services/dictionary.service';
 
 @Component({
   selector: 'app-funeral-data',
@@ -23,7 +24,7 @@ export class FuneralDataComponent implements OnInit {
   });
   searchDate:string='';
 
-  constructor(public funeralService: FuneralService,public arabicNums: ArabicNumsService,public umalquraCalendar:UmalquraCalendarService,public authService:AuthService,private fb: FormBuilder) { }
+  constructor(public funeralService: FuneralService,public arabicNums: ArabicNumsService,public umalquraCalendar:UmalquraCalendarService,public authService:AuthService,private fb: FormBuilder,public dictionary:DictionaryService) { }
 
   ngOnInit(): void {
     this.searchDate=this.getCurrentDate();
@@ -51,36 +52,7 @@ export class FuneralDataComponent implements OnInit {
       }
     });
   }
-  getSexDesc(sexId:string){
-    switch(sexId){
-      case 'M':
-        return 'ذكر';
-        case 'F':
-        return 'انثى';
-        case 'B':
-        return 'طفل';
-        case 'G':
-        return 'طفلة';
-        default:
-          return '';
-    }
-  }
-  getPrayerDesc(prayerId:number){
-    switch(prayerId){
-      case 1:
-        return 'الصبح';
-        case 2:
-        return 'الظهر';
-        case 3:
-        return 'العصر';
-        case 4:
-        return 'المعرب';
-        case 5:
-        return 'العشاء';
-        default:
-          return '';
-    }
-  }
+  
 
 search(){
   this.getFuneralDetails();

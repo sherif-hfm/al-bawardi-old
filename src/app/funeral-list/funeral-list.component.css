@@ -28,3 +28,11 @@ font-family: 'Cairo', sans-serif;
 .number{
     color: red;
 }
+.buttons{
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800 !important;
+  font-size: 24px;
+}
+.btn{
+    font-weight: 800 !important;
+}

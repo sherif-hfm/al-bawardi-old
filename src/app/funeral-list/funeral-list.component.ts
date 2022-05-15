@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FuneralService} from '../funeral.service';
-import { ArabicNumsService} from '../arabic-nums.service';
-import { UmalquraCalendarService} from '../umalqura-calendar.service';
+import { FuneralService} from '../services/funeral.service';
+import { ArabicNumsService} from '../services/arabic-nums.service';
+import { UmalquraCalendarService} from '../services/umalqura-calendar.service';
 
 @Component({
   selector: 'funeral-list',

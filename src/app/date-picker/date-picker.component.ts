@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { UmalquraCalendarService } from '../umalqura-calendar.service';
-import { ArabicNumsService } from '../arabic-nums.service';
+import { UmalquraCalendarService } from '../services/umalqura-calendar.service';
+import { ArabicNumsService } from '../services/arabic-nums.service';
 
 enum CalendarTypes
 {

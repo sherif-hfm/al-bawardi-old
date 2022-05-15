@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HijriDate } from './models/HijriDate';
+import { HijriDate } from '../models/HijriDate';
 
 @Injectable({
   providedIn: 'root'
