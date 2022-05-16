@@ -23,7 +23,7 @@
             الادارة
           </span>
         </a>
-        <a class="navItem"   routerLink="/admin" >
+        <a class="navItem"   (click)="openStatisticsPopup()" >
           <i class="fa-solid fa-chart-line"></i>
           <span>
             احصائيات
@@ -46,6 +46,42 @@
 </div>
 <div class="headerContainer">
  
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':statisticsDisplayStyle}" style="z-index: 99999999">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">الاحصائيات</h4>
+      </div>
+      <div class="modal-body">
+        <div style="display: grid;grid-template-columns: 50% 50% ">
+          <div>جنائز أمس</div>
+          <div>{{statistics.yesterday}}</div>
+          <div>جنائز آخر 7 أيام</div>
+          <div>{{statistics.last7Days}}</div>
+          <div>جنائز آخر 30 يوم</div>
+          <div>{{statistics.lastMonth}}</div>
+          <div>منذ بداية السنة الهجرية ({{statistics.diffDaysHijiry}} يوم)</div>
+          <div>{{statistics.lastYearHijiry}}</div>
+          <div>منذ بداية السنة الميلادية ({{statistics.diffDays}} يوم)</div>
+          <div>{{statistics.lastYear}}</div>
+        </div>
+        <div style="text-align:center ;font-size: 25px;font-weight: bold;">
+          رحمهم الله وأسكنهم فسيح جناته
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeStatisticsPopup()">
+          اغلاق
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
     

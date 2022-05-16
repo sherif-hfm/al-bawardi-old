@@ -1,34 +1,88 @@
-
-
-
-
 <div style="width: 100%;">
   <div class="cards-container">
-    <div class="card" *ngFor="let card of funeralList" >
-      <div style="text-align:center" *ngIf="card.Total > 0"  >
+    <div class="card" *ngFor="let prayer of funeralList" >
+      <div style="text-align:center" *ngIf="prayer.Total > 0"  >
         <div>
-          صلاة <span class="number">{{card.prayerName}}</span>
+          صلاة <span class="number">{{prayer.prayerName}}</span>
         </div>
         <div>
-          عدد الجنائز <span class="number">{{toArabicNum(card.Total)}}</span>
+          عدد الجنائز <span class="number">{{toArabicNum(prayer.Total)}}</span>
         </div>
         <div class="info-container">
-          <div class="info" *ngIf="card.M > 0"> 
+          <div class="info" *ngIf="prayer.M > 0"> 
             <div>رجال</div>
-            <div class="number">{{toArabicNum(card.M)}}</div>
+            <div class="number">{{toArabicNum(prayer.M)}}</div>
           </div>
-          <div class="info" *ngIf="card.F> 0">
+          <div class="info" *ngIf="prayer.F> 0">
             <div>نساء</div>
-            <div class="number">{{toArabicNum(card.F)}}</div>
+            <div class="number">{{toArabicNum(prayer.F)}}</div>
           </div>
-          <div class="info" *ngIf="(card.B + card.G) > 0">
+          <div class="info" *ngIf="(prayer.B + prayer.G) > 0">
             <div>اطفال</div>
-            <div class="number">{{toArabicNum(card.B + card.G)}}</div>
+            <div class="number">{{toArabicNum(prayer.B + prayer.G)}}</div>
           </div>
         </div>
         <div class="buttons">
-          <button class="btn btn-info">عرض التفاصيل</button>
+          <button class="btn btn-info" (click)="openDetailsPopup(prayer.prayerId)">عرض التفاصيل</button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':detailsDisplayStyle}" style="z-index: 99999999">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">تفاصيل الجنائز</h4>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let funeral of funeralDetails" style="display:flex;justify-content: space-between;">
+          <div>{{funeral.deadName}}</div>
+          <div>{{dictionary.getSexDesc(funeral.sex)}}</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeDetailsPopup()">
+          اغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':statisticsDisplayStyle}" style="z-index: 99999999">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">الاحصائيات</h4>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex;justify-content: space-between;">
+          <div>جنائز أمس</div>
+          <div>xxx</div>
+          <div>جنائز آخر 7 أيام</div>
+          <div>xxx</div>
+          <div>جنائز آخر 30 يوم</div>
+          <div>xxx</div>
+          <div>منذ بداية السنة الهجرية (280 يوم)</div>
+          <div>xxx</div>
+          <div>منذ بداية السنة الميلادية (135 يوم)</div>
+          <div>xxx</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeStatisticsPopup()">
+          اغلاق
+        </button>
       </div>
     </div>
   </div>

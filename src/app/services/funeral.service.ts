@@ -16,6 +16,10 @@ export class FuneralService {
     console.log('getTodayFuneral');
     return this.http.get( this.settings.ApiBaseUrl +  '/funeral' ,{observe:'body',responseType:'json'});
   }
+  getStatistics(){
+    console.log('getTodayFuneral');
+    return this.http.get( this.settings.ApiBaseUrl +  '/funeral/statistics' ,{observe:'body',responseType:'json'});
+  }
 
   getDetails(date: any){
     console.log('getDetails');
@@ -25,6 +29,11 @@ export class FuneralService {
   getDetail(id: any){
     console.log('getDetail');
     return this.http.get( this.settings.ApiBaseUrl +  '/funeral/getDetail/' + id  ,{observe:'body',responseType:'json'});
+  }
+
+  getDayDetail(id: any,date:any){
+    console.log('getDayDetail');
+    return this.http.get( this.settings.ApiBaseUrl +  `/funeral/getDayDetail/${date}/${id}`,{observe:'body',responseType:'json'});
   }
 
   addFuneral(funeral: any){
