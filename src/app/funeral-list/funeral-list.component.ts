@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FuneralService} from '../services/funeral.service';
 import { ArabicNumsService} from '../services/arabic-nums.service';
 import { UmalquraCalendarService} from '../services/umalqura-calendar.service';
@@ -15,9 +16,7 @@ export class FuneralListComponent implements OnInit {
   funeralDetails:any=[];
   detailsDisplayStyle = "none";
 
-  statistics:any={};
-
-  statisticsDisplayStyle = "none";
+  
   
   constructor(public funeralService: FuneralService,public arabicNums: ArabicNumsService,public umalquraCalendar:UmalquraCalendarService,public dictionary:DictionaryService) {
     console.log(umalquraCalendar.gregorianToUmAlQura(new Date()));
@@ -70,23 +69,6 @@ export class FuneralListComponent implements OnInit {
     this.detailsDisplayStyle = "none";
   }
 
-  openStatisticsPopup(id:any) {
-
-    this.funeralService.getStatistics().subscribe({
-      next:(data:any)=>{
-       console.log(data);
-       this.statistics=data;
-       this.statisticsDisplayStyle = "block";
-      },
-      error:(err:any)=>{
-        console.log('http error');
-        console.log(err.error);
-      }
-    });
-    
-  }
-  closeStatisticsPopup() {
-    this.statisticsDisplayStyle = "none";
-  }
+  
 
 }

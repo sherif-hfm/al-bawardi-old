@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnChanges } from '@angular/core';
 import { FormGroup, FormControl,FormArray,FormBuilder,Validators, ValidationErrors  } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService} from '../services/auth.service';
+import { AlertTypes} from '../alert/alert.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+  showAlert:AlertTypes=AlertTypes.none;
+  alertMessage:string='ok';
   loginFrom = this.fb.group({
     userLogin:new FormControl('',Validators.required),
     password:new FormControl('',Validators.required),
@@ -35,6 +37,8 @@ export class LoginComponent implements OnInit {
        this.router.navigate(['/admin']);
       },
       error:(err:any)=>{
+        this.alertMessage='حدث خطأ اثناء عملية تسجيل الدخول';
+        this.showAlert=AlertTypes.danger;
         console.log('http error');
         console.log(err.error);
       }

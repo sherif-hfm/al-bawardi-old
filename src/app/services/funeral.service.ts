@@ -17,7 +17,7 @@ export class FuneralService {
     return this.http.get( this.settings.ApiBaseUrl +  '/funeral' ,{observe:'body',responseType:'json'});
   }
   getStatistics(){
-    console.log('getTodayFuneral');
+    console.log('getStatistics');
     return this.http.get( this.settings.ApiBaseUrl +  '/funeral/statistics' ,{observe:'body',responseType:'json'});
   }
 

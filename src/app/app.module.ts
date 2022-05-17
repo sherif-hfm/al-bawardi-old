@@ -15,6 +15,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { FuneralDataComponent } from './funeral-data/funeral-data.component';
 
 import { AppHttpInterceptor } from './app-http.interceptor';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AppHttpInterceptor } from './app-http.interceptor';
     PageNotFoundComponent,
     LoginComponent,
     DatePickerComponent,
-    FuneralDataComponent
+    FuneralDataComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,7 @@ export class DictionaryService {
   getPrayerDesc(prayerId:number){
     switch(prayerId){
       case 1:
-        return 'الصبح';
+        return 'الفجر';
         case 2:
         return 'الظهر';
         case 3:
