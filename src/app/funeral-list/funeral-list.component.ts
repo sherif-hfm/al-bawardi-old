@@ -15,6 +15,7 @@ export class FuneralListComponent implements OnInit {
   funeralList:any=[];
   funeralDetails:any=[];
   detailsDisplayStyle = "none";
+  prayerTodayTotal:any=0;
 
   
   
@@ -25,11 +26,17 @@ export class FuneralListComponent implements OnInit {
   ngOnInit(): void {
     //console.log(this.arabicNums.toArabicNum('123')) ;
     this.getTodayFuneral();
+   
   }
 
   getCurrentDate(){
     const crDate=new Date();
     return crDate.getFullYear() + '-' + (crDate.getMonth() + 1)+ '-' +crDate.getDate();
+  }
+
+  getCurrentDateV2(){
+    const crDate=new Date();
+    return crDate.getFullYear() + '/' + (crDate.getMonth() + 1)+ '/' +crDate.getDate();
   }
 
   toArabicNum(num:string){
@@ -40,6 +47,7 @@ export class FuneralListComponent implements OnInit {
     this.funeralService.getTodayFuneral().subscribe({
       next:(data:any)=>{
        console.log(data);
+       this.prayerTodayTotal = data.reduce((partialSum:any, p:any) => partialSum + p.Total, 0);
        this.funeralList=data;
       },
       error:(err:any)=>{

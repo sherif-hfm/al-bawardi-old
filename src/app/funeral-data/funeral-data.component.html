@@ -1,70 +1,88 @@
 <!-- ادخال بيانات صلاة الجنازة -->
 <div class="container">
+    <div class="title">
+        <span>بيانات الجنازات</span>
+    </div>
+    <div class="search" *ngIf="mode=='view'">
+        <div class="searchForm">
+            <label style="display:block">تاريخ الجنازة</label>
+            <input type="text" [(ngModel)]="searchDate">
+            <button class="btn btn-success" (click)="search()">بحث</button>
+        </div>
+    </div>
     <div class="details">
         <div *ngIf="mode=='view'">
-            <span>بيانات الجنازات</span>
-            <div>
-                <label>تاريخ الجنازة</label>
-                <input type="text" [(ngModel)]="searchDate">
-                <button (click)="search()">بحث</button>
-            </div>
-            <div>
-                <button (click)="add()">اضافة</button>
+            <div style="width: 100%;padding: 0">
+                <button class="btn btn-primary" style="margin-right: 0px;" (click)="add()">اضافة</button>
             </div>
             <div class="dataGrid">
-                <div class="gridHeader">
-                    <div class="gridHeadercolumn">تاريخ الجنازة</div>
-                    <div class="gridHeadercolumn">اسم المتوفي</div>
-                    <div class="gridHeadercolumn">جنس المتوفي</div>
-                    <div class="gridHeadercolumn">الصلاة</div>
-                    <div class="gridHeadercolumn">الاجراءات</div>
-                </div>
-                <div class="gridDataRow" *ngFor="let funeral of funeralList">
-                    <div class="gridDatacolumn" >{{funeral.date}}</div>
-                    <div class="gridDatacolumn" >{{funeral.deadName}}</div>
-                    <div class="gridDatacolumn" >{{dictionary.getSexDesc(funeral.sex)}}</div>
-                    <div class="gridDatacolumn" >{{dictionary.getPrayerDesc(funeral.prayerId)}}</div>
-                    <div class="rowButtons">
-                        <button (click)="edit(funeral.id)">تعديل</button>
-                        <button (click)="delete(funeral.id)">حذف</button>
+                <div class="gridCell header">تاريخ الجنازة</div>
+                <div class="gridCell header">اسم المتوفي</div>
+                <div class="gridCell header">جنس المتوفي</div>
+                <div class="gridCell header">الصلاة</div>
+                <div class="gridCell header">مكان الدفن</div>
+                <div class="gridCell header">الاجراءات</div>
+                <ng-container  *ngFor="let funeral of funeralList; let i = index">
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">تاريخ الجنازة :</label>
+                        {{funeral.date}}
                     </div>
-                </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">اسم المتوفي :</label>
+                        {{funeral.deadName}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">جنس المتوفي :</label>
+                        {{funeral.sex.Name}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">الصلاة :</label>
+                        {{funeral.prayer.prayerName}}
+                    </div>
+                    <div class="gridCell" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <label class="mobileTitle">مكان الدفن :</label>
+                        {{funeral.purialPlace.placeName}}
+                    </div>
+                    <div class="gridCell rowButtons" [ngClass]="{'oddGridCell':(i % 2) > 0}">
+                        <button (click)="edit(funeral.id)" class="btn btn-success">تعديل</button>
+                        <button (click)="delete(funeral.id)" class="btn btn-danger">حذف</button>
+                    </div>
+                </ng-container>
             </div>
         </div>
-        <div *ngIf="mode!='view'" >
-            <div>اضافة/تعديل بيانات الجنازة</div>
-            <div [formGroup]="funeralFrom">
+        <div *ngIf="mode!='view'" class="editFormContainer" >
+            <div class="title">اضافة/تعديل بيانات الجنازة</div>
+            <div [formGroup]="funeralFrom" class="editForm">
                 <input type="hidden" formControlName="id">
-                <div>
-                    <label>تاريخ الصلاة</label>
-                    <input type="text" formControlName="date">
+                <div class="inputContainer">
+                    <label class="inputLable">تاريخ الصلاة</label>
+                    <input  class="input" type="text" formControlName="date">
                 </div>
-                <div>
-                    <label>اسم المتوفي</label>
-                    <input type="text" formControlName="deadName">
+                <div class="inputContainer">
+                    <label class="inputLable">اسم المتوفي</label>
+                    <input class="input" type="text" formControlName="deadName">
                 </div>
-                <div>
-                    <label>جنس المتوفي</label>
-                    <select formControlName="sex">
-                        <option value="M">`ذكر</option>
-                        <option value="F">انثى</option>
-                        <option value="B">طفل</option>
-                        <option value="G">طفلة</option>
+                <div class="inputContainer">
+                    <label class="inputLable">جنس المتوفي</label>
+                    <select class="input" formControlName="sex">
+                        <option *ngFor="let sex of sexs" value="{{sex.id}}">{{sex.Name}}</option>
                     </select>
                 </div>
-                <div>
-                    <label>الصلاة</label>
-                    <select formControlName="prayerId">
-                        <option value="1">الفجر</option>
-                        <option value="2">الظهر</option>
-                        <option value="3">العصر</option>
-                        <option value="4">المغرب</option>
-                        <option value="5">العشاء</option>
+                <div class="inputContainer">
+                    <label class="inputLable">الصلاة</label>
+                    <select class="input" formControlName="prayerId">
+                        <option *ngFor="let prayer of prayers" value="{{prayer.id}}">{{prayer.prayerName}}</option>
                     </select>
                 </div>
-                <div>
-                    <button (click)="save()">حفظ</button>
-                    <button (click)="exit()">خروج</button>
+                <div class="inputContainer">
+                    <label class="inputLable">مكان الدفن</label>
+                    <select class="input" formControlName="placeId">
+                        <option *ngFor="let place of Places" value="{{place.id}}">{{place.placeName}}</option>
+                    </select>
+                </div>
+                <div class="formButtons">
+                    <button class="btn btn-success" (click)="save()">حفظ</button>
+                    <button class="btn btn-danger" (click)="exit()">خروج</button>
                 </div>
             </div>
         </div>

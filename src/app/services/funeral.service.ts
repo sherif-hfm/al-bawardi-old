@@ -36,6 +36,21 @@ export class FuneralService {
     return this.http.get( this.settings.ApiBaseUrl +  `/funeral/getDayDetail/${date}/${id}`,{observe:'body',responseType:'json'});
   }
 
+  getPrayers(){
+    console.log('getPrayers');
+    return this.http.get( this.settings.ApiBaseUrl +  '/funeral/prayers',{observe:'body',responseType:'json'});
+  }
+
+  getSexs(){
+    console.log('getSexs');
+    return this.http.get( this.settings.ApiBaseUrl +  '/funeral/sexs',{observe:'body',responseType:'json'});
+  }
+
+  getPlace(){
+    console.log('getPlace');
+    return this.http.get( this.settings.ApiBaseUrl +  '/funeral/places',{observe:'body',responseType:'json'});
+  }
+
   addFuneral(funeral: any){
     console.log('addFuneral');
     return this.http.post(this.settings.ApiBaseUrl + '/funeral/add',funeral);

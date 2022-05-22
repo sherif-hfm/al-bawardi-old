@@ -8,22 +8,30 @@
     flex-wrap: wrap;
 }
 .card{
-width: 400px;
-height: 300px;
+width: 300px;
+height: 250px;
 border-style:solid ;
-border-width:1px ;
+border-width:2px ;
+border-color: rgb(18, 161, 18);
 margin: 20px;
-background-color:rgb(234, 247, 213);
+background-color:white;
 font-family: 'Cairo', sans-serif;
   font-weight: 600;
   font-size: 24px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3)  ; 
 }
+.card.main{
+    background-color:rgb(37 90 37);
+    color: white;
+}
+
 .info-container{
     display: flex;
     justify-content: center;
 }
 .info{
     margin: 10px;
+    font-size: 20px;
 }
 .number{
     color: red;
@@ -35,4 +43,13 @@ font-family: 'Cairo', sans-serif;
 }
 .btn{
     font-weight: 800 !important;
+    background-color: green;
+    color: white;
 }
+
+.modal-title{
+    font-weight: bold;
+  }
+  .modal-body{
+    font-size: 18px;
+  }

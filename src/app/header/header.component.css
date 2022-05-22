@@ -14,25 +14,43 @@
 }
 .header{
   width: 100%;
-  background-color: rgb(1, 46, 1);
+  background-color: rgb(255, 255, 255);
   display: flex;
   position: sticky;
   top: 0;
   box-shadow: 0 5px 41.5px rgb(40 64 37 / 50%);
   z-index: 9999999;
 }
+.headerLogoTitle{
+display: flex;
+width: 30%;
+min-width: 380px;
+}
+
 .headerLogo{
-  width: 10%;
   text-align: center;
 }
+.headerLogo >img{
+  width: 100px;
+}
 .headerTitle{
-  color: white;
+  color: rgb(117, 150, 90);
   font-family: 'Cairo', sans-serif;
   font-weight: 600;
-  font-size: 40px;
-  width: 20%;
+  font-size: 30px;
+  width: 70%;
   margin: auto;
+  padding-right: 10px;
 }
+.headerMenuIcon{
+visibility: hidden;
+}
+
+.headerSubTitle{
+  font-size: 20px;
+  display: block;
+}
+
 .headerNav{
   display: flex;
   width: 70%;
@@ -48,7 +66,7 @@
 }
 .navItem{
   display: block;
-  color: white;
+  color:rgb(117, 150, 90);
   font-family: 'Cairo', sans-serif;
   font-weight: 600;
   font-size: 20px;
@@ -73,5 +91,84 @@ flex-grow: 1;
   flex-grow: 1;
   justify-content:left;
 }
-  
+.modal-title{
+  font-weight: bold;
+}
+.modal-body{
+  font-size: 18px;
+}
+
+@media screen and (max-width: 990px){
+.header{
+display: block;
+box-shadow:none;
+}
+.headerLogoTitle{
+  display: flex;
+  width: 100%;
+  border-bottom-width:0.5px ;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(171, 197, 150); 
+  height: 115px;
+  }
+  .headerLogoTitleShadow{
+    box-shadow: 0 5px 10px rgb(40 64 37 / 50%);
+  }
+
+  .headerLogo >img{
+    width: 75px;
+  }
+
+  .headerMenuIcon{
+    visibility:visible;
+    color: rgb(117, 150, 90);
+    font-size: 20px;
+    margin: 10px;
+  }
+  .headerTitle{
+    font-size: 25px;
+    margin-top: 10px;
+  }
+  .headerSubTitle{
+    font-size: 20px;
+  }
+  .headerNav{
+    visibility: hidden;
+    display: block;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+    opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+  }
+  .headerNav.show{
+    visibility: visible ;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 300ms;
+  }
+
+  .rightNav{
+    display: block;
+    text-align: right;
+      }
+  .navItem{
+    display: block;
+    font-size: 20px;
+    text-align: right;
+    margin-top:10px ;
+  }
+  .navItem:hover{
+    background-color: gainsboro
+  }
+
+  .navItem i{
+    font-size: 20px;
+    
+  }
+  .leftNav{
+    display: block;
+    text-align: right;
+  }
+}
 

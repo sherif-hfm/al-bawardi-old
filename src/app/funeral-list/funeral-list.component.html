@@ -1,12 +1,31 @@
 <div style="width: 100%;">
   <div class="cards-container">
+    <div class="card main"  >
+      <div style="text-align:center"  >
+        <div style="font-size:35px ;margin-top: 10px;">
+           <span>{{umalquraCalendar.getCurrentDate().dayName}}</span>
+        </div>
+        <div style="font-size:25px ;">
+          <span>{{arabicNums.toArabicNum(umalquraCalendar.getCurrentDate().year + '/' + umalquraCalendar.getCurrentDate().month + '/' + umalquraCalendar.getCurrentDate().day)}} هـ</span>
+        </div>
+        <div style="font-size:25px ;">
+          <span>{{arabicNums.toArabicNum(getCurrentDateV2())}} م</span>
+        </div>
+        <div style="font-size:25px ;">
+          <span>{{arabicNums.toArabicNum(prayerTodayTotal)}}</span>
+        </div>
+        <div style="font-size:25px ;">
+          <span>جنازة</span>
+        </div>
+      </div>
+    </div>
     <div class="card" *ngFor="let prayer of funeralList" >
       <div style="text-align:center" *ngIf="prayer.Total > 0"  >
-        <div>
-          صلاة <span class="number">{{prayer.prayerName}}</span>
+        <div style="color:black;font-size:35px ;margin-top: 10px;">
+          صلاة <span>{{prayer.prayerName}}</span>
         </div>
-        <div>
-          عدد الجنائز <span class="number">{{toArabicNum(prayer.Total)}}</span>
+        <div style="color:rgb(3, 48, 13);font-size:25px ;">
+          عدد الجنائز <span>{{toArabicNum(prayer.Total)}}</span>
         </div>
         <div class="info-container">
           <div class="info" *ngIf="prayer.M > 0"> 
@@ -23,7 +42,7 @@
           </div>
         </div>
         <div class="buttons">
-          <button class="btn btn-info" (click)="openDetailsPopup(prayer.prayerId)">عرض التفاصيل</button>
+          <button class="btn" (click)="openDetailsPopup(prayer.prayerId)">عرض التفاصيل</button>
         </div>
       </div>
     </div>
@@ -43,11 +62,11 @@
       <div class="modal-body">
         <div *ngFor="let funeral of funeralDetails" style="display:flex;justify-content: space-between;">
           <div>{{funeral.deadName}}</div>
-          <div>{{dictionary.getSexDesc(funeral.sex)}}</div>
+          <div>{{funeral.sex.Name}}</div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="closeDetailsPopup()">
+        <button type="button" class="btn btn-success" (click)="closeDetailsPopup()">
           اغلاق
         </button>
       </div>

@@ -1,9 +1,9 @@
-<alert [(show)]="showAlert">
-      {{alertMessage}}
-  </alert>
 <div class="container">
     <div class="cards-container">
         <div class="card">
+            <div style="font-size:35px ;margin-top: 10px;text-align: center;">
+                <span>تسجيل الدخول</span>
+             </div>
             <div class="form" [formGroup]="loginFrom">
                 <div class="formInput">
                     <label>اسم المستخدم</label>
@@ -15,7 +15,7 @@
                 </div>
                 <!-- <p>Form Status: {{ loginFrom.status }}</p> -->
                 <div class="formButtons">
-                    <button [disabled]="loginFrom.status == 'INVALID'" (click)="login()">دخول</button>
+                    <button class="btn" [disabled]="loginFrom.status == 'INVALID'" (click)="login()">دخول</button>
                 </div>
             </div>
         </div>

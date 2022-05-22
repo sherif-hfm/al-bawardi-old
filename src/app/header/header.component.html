@@ -1,15 +1,22 @@
 <!-- Toolbar -->
-<div class="topInfo">
+<!-- <div class="topInfo">
 
-</div>
+</div> -->
 <div class="header">
-    <div class="headerLogo">
-      <img  style="width:90px ;" alt="Angular Logo"  src="assets/images/logo.png" />
+    <div class="headerLogoTitle" [ngClass]="{'headerLogoTitleShadow':!showMenu}">
+      <div class="headerLogo">
+        <img   alt="Angular Logo"  src="assets/images/logo.png" />
+      </div>
+      <div class="headerTitle">
+        <span>مجمع البواردي الخيري</span>
+        <span class="headerSubTitle">الجنائز</span>
+      </div>
+      <div class="headerMenuIcon" (click)="mobileMenuClick($event)">
+        <i class="fa-solid fa-bars" *ngIf="!showMenu"></i>
+        <i class="fa-solid fa-xmark" style="font-size: 28px;" *ngIf="showMenu"></i>
+      </div>
     </div>
-    <div class="headerTitle">
-      <span>مجمع البواردي الخيري</span>
-    </div>
-    <div class="headerNav">
+    <div class="headerNav" [ngClass]="{'show':showMenu}">
       <div class="rightNav">
         <a class="navItem"   routerLink="/">
           <i class="fa-solid fa-house"></i>
@@ -52,31 +59,31 @@
   class="modal"
   tabindex="-1"
   role="dialog"
-  [ngStyle]="{'display':statisticsDisplayStyle}" style="z-index: 99999999">
+  [ngStyle]="{'display':statisticsDisplayStyle}"  style="z-index: 99999999" *ngIf="showStatistics">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">الاحصائيات</h4>
       </div>
       <div class="modal-body">
-        <div style="display: grid;grid-template-columns: 50% 50% ">
+        <div style="display: grid;grid-template-columns: 70% 30% ">
           <div>جنائز أمس</div>
-          <div>{{statistics.yesterday}}</div>
-          <div>جنائز آخر 7 أيام</div>
-          <div>{{statistics.last7Days}}</div>
-          <div>جنائز آخر 30 يوم</div>
-          <div>{{statistics.lastMonth}}</div>
-          <div>منذ بداية السنة الهجرية ({{statistics.diffDaysHijiry}} يوم)</div>
-          <div>{{statistics.lastYearHijiry}}</div>
-          <div>منذ بداية السنة الميلادية ({{statistics.diffDays}} يوم)</div>
-          <div>{{statistics.lastYear}}</div>
+          <div>{{arabicNums.toArabicNum(statistics.yesterday)}}</div>
+          <div>{{arabicNums.toArabicNum('جنائز آخر 7 أيام')}}</div>
+          <div>{{arabicNums.toArabicNum(statistics.last7Days)}}</div>
+          <div>{{arabicNums.toArabicNum('جنائز آخر 30 يوم')}}</div>
+          <div>{{arabicNums.toArabicNum(statistics.lastMonth)}}</div>
+          <div>منذ بداية السنة الهجرية ({{arabicNums.toArabicNum(statistics.diffDaysHijiry)}} يوم)</div>
+          <div>{{arabicNums.toArabicNum(statistics.lastYearHijiry)}}</div>
+          <div>منذ بداية السنة الميلادية ({{arabicNums.toArabicNum(statistics.diffDays)}} يوم)</div>
+          <div>{{arabicNums.toArabicNum(statistics.lastYear)}}</div>
         </div>
         <div style="text-align:center ;font-size: 25px;font-weight: bold;">
           رحمهم الله وأسكنهم فسيح جناته
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="closeStatisticsPopup()">
+        <button type="button" class="btn btn-success" (click)="closeStatisticsPopup()">
           اغلاق
         </button>
       </div>

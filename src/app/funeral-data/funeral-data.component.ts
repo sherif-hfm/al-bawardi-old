@@ -15,20 +15,70 @@ import { DictionaryService} from '../services/dictionary.service';
 export class FuneralDataComponent implements OnInit {
   mode:string='view'; // view || edit || add
   funeralList:any[]=[];
+  prayers:any[]=[];
+  sexs:any[]=[];
+  Places:any[]=[];
   funeralFrom = this.fb.group({
     id:new FormControl('',Validators.required),
     deadName:new FormControl('',Validators.required),
     date:new FormControl('',Validators.required),
     prayerId:new FormControl('',Validators.required),
     sex:new FormControl('',Validators.required),
+    placeId:new FormControl('',Validators.required),
   });
   searchDate:string='';
 
   constructor(public funeralService: FuneralService,public arabicNums: ArabicNumsService,public umalquraCalendar:UmalquraCalendarService,public authService:AuthService,private fb: FormBuilder,public dictionary:DictionaryService) { }
 
   ngOnInit(): void {
+    this.loadlookups();
     this.searchDate=this.getCurrentDate();
     this.search();
+  }
+
+  loadlookups(){
+    this.getPrayers();
+    this.getSexs();
+    this.getPlace();
+  }
+
+  getPrayers(){
+    this.funeralService.getPrayers().subscribe({
+      next:(data:any)=>{
+       console.log(data);
+       this.prayers=data;
+      },
+      error:(err:any)=>{
+        console.log('http error');
+        console.log(err.error);
+      }
+    });
+  }
+
+  getSexs(){
+    this.funeralService.getSexs().subscribe({
+      next:(data:any)=>{
+       console.log(data);
+       this.sexs=data;
+      },
+      error:(err:any)=>{
+        console.log('http error');
+        console.log(err.error);
+      }
+    });
+  }
+
+  getPlace(){
+    this.funeralService.getPlace().subscribe({
+      next:(data:any)=>{
+       console.log(data);
+       this.Places=data;
+      },
+      error:(err:any)=>{
+        console.log('http error');
+        console.log(err.error);
+      }
+    });
   }
 
   toArabicNum(num:string){
@@ -69,9 +119,10 @@ search(){
        console.log(data);
        this.funeralFrom.get('id')?.setValue(data.id);
        this.funeralFrom.get('date')?.setValue(data.date);
-       this.funeralFrom.get('sex')?.setValue(data.sex);
+       this.funeralFrom.get('sex')?.setValue(data.sexId);
        this.funeralFrom.get('deadName')?.setValue(data.deadName);
        this.funeralFrom.get('prayerId')?.setValue(data.prayerId);
+       this.funeralFrom.get('placeId')?.setValue(data.purialPlaceId);
        this.mode='edit';
       },
       error:(err:any)=>{
@@ -100,6 +151,7 @@ search(){
       date:this.funeralFrom.get('date')?.value,
       sex:this.funeralFrom.get('sex')?.value,
       prayerId:this.funeralFrom.get('prayerId')?.value,
+      placeId:this.funeralFrom.get('placeId')?.value,
     };
     this.funeralService.addFuneral(funeral).subscribe({
       next:(data:any)=>{
@@ -122,6 +174,7 @@ search(){
       date:this.funeralFrom.get('date')?.value,
       sex:this.funeralFrom.get('sex')?.value,
       prayerId:this.funeralFrom.get('prayerId')?.value,
+      placeId:this.funeralFrom.get('placeId')?.value,
     };
     console.log(funeral);
     this.funeralService.updateFuneral(funeral).subscribe({
