@@ -111,6 +111,7 @@ search(){
     this.mode='add';
     this.funeralFrom.get('id')?.setValue(0);
     this.funeralFrom.get('date')?.setValue(this.getCurrentDate());
+    this.funeralFrom.get('deadName')?.setValue('');
     }
 
   edit(id:any){

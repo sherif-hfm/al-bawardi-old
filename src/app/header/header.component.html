@@ -21,7 +21,7 @@
         <a class="navItem"   routerLink="/">
           <i class="fa-solid fa-house"></i>
           <span>
-            الصفحة الرئيسية 
+            الرئيسية 
           </span>
         </a>
         <a class="navItem"   routerLink="/admin" *ngIf="authService.isAuth">
@@ -41,7 +41,7 @@
         <a class="navItem"   routerLink="/login" *ngIf="!authService.isAuth" >
           <i class="fas fa-user-lock"></i>
           <span>
-            تسجيل دخول
+            تسجيل الدخول
           </span>
         </a>
         <a class="navItem"  (click)="logout($event)" *ngIf="authService.isAuth">
@@ -51,11 +51,39 @@
       </div>
     </div>
 </div>
-<div class="headerContainer">
- 
-</div>
 
-<div
+<modal [(show)]="showStatistics">
+  <div class="statContainer" *ngIf="showStatistics">
+    <div class="statTitle">
+       <span> احصائيات</span>
+    </div>
+    <div class="statSubTitle">
+      <span>جنائز مجمع البوردي الخيري</span>
+   </div>
+    <div style="display: grid;grid-template-columns: 70% 10% 20%;grid-gap:10px;;font-size: 14px; ">
+      <div>جنائز أمس</div>
+      <div class="statNum">{{arabicNums.toArabicNum(statistics.yesterday)}}</div>
+      <div>جنازة</div>
+      <div>{{arabicNums.toArabicNum('جنائز آخر 7 أيام')}}</div>
+      <div class="statNum">{{arabicNums.toArabicNum(statistics.last7Days)}}</div>
+      <div>جنازة</div>
+      <div>{{arabicNums.toArabicNum('جنائز آخر 30 يوم')}}</div>
+      <div class="statNum">{{arabicNums.toArabicNum(statistics.lastMonth)}}</div>
+      <div>جنازة</div>
+      <div>منذ بداية السنة الهجرية ({{arabicNums.toArabicNum(statistics.diffDaysHijiry)}} يوم)</div>
+      <div class="statNum">{{arabicNums.toArabicNum(statistics.lastYearHijiry)}}</div>
+      <div>جنازة</div>
+      <div>منذ بداية السنة الميلادية ({{arabicNums.toArabicNum(statistics.diffDays)}} يوم)</div>
+      <div class="statNum">{{arabicNums.toArabicNum(statistics.lastYear)}}</div>
+      <div>جنازة</div>
+    </div>
+    <div style="width:300px;height:1px;background-color: rgb(117, 150, 90) ;margin-left: auto;margin-right: auto;margin-top: 10px;margin-bottom: 10px;"></div>
+    <div style="text-align:center ;font-size: 18px;font-weight: bold;color: rgb(117, 150, 90)">
+      رحمهم الله وأسكنهم فسيح جناته
+    </div>
+  </div>
+</modal>
+<!-- <div
   class="modal"
   tabindex="-1"
   role="dialog"
@@ -65,23 +93,7 @@
       <div class="modal-header">
         <h4 class="modal-title">الاحصائيات</h4>
       </div>
-      <div class="modal-body">
-        <div style="display: grid;grid-template-columns: 70% 30% ">
-          <div>جنائز أمس</div>
-          <div>{{arabicNums.toArabicNum(statistics.yesterday)}}</div>
-          <div>{{arabicNums.toArabicNum('جنائز آخر 7 أيام')}}</div>
-          <div>{{arabicNums.toArabicNum(statistics.last7Days)}}</div>
-          <div>{{arabicNums.toArabicNum('جنائز آخر 30 يوم')}}</div>
-          <div>{{arabicNums.toArabicNum(statistics.lastMonth)}}</div>
-          <div>منذ بداية السنة الهجرية ({{arabicNums.toArabicNum(statistics.diffDaysHijiry)}} يوم)</div>
-          <div>{{arabicNums.toArabicNum(statistics.lastYearHijiry)}}</div>
-          <div>منذ بداية السنة الميلادية ({{arabicNums.toArabicNum(statistics.diffDays)}} يوم)</div>
-          <div>{{arabicNums.toArabicNum(statistics.lastYear)}}</div>
-        </div>
-        <div style="text-align:center ;font-size: 25px;font-weight: bold;">
-          رحمهم الله وأسكنهم فسيح جناته
-        </div>
-      </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-success" (click)="closeStatisticsPopup()">
           اغلاق
@@ -89,7 +101,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
     
     

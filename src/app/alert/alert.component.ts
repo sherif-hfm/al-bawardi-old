@@ -3,10 +3,6 @@ import { Component, Input, OnInit,Output,EventEmitter } from '@angular/core';
 @Component({
   selector: 'alert',
   templateUrl: './alert.component.html',
-  // template: `
-  //   <h2>Single-slot content projection</h2>
-  //   <ng-content></ng-content>
-  // `,
   styleUrls: ['./alert.component.css']
 })
 export class AlertComponent implements OnInit {
@@ -17,7 +13,7 @@ export class AlertComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+    console.log('AlertComponent');
   }
 
   hide(){

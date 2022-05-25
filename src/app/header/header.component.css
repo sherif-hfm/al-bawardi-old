@@ -1,11 +1,4 @@
-.headerContainer{
-  width: 100%;
-  text-decoration:none;
-  font-family: 'Cairo', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: white;
-}
+
 
 .topInfo{
   height: 30px;
@@ -91,11 +84,27 @@ flex-grow: 1;
   flex-grow: 1;
   justify-content:left;
 }
-.modal-title{
-  font-weight: bold;
+.statContainer{
+  padding-left: 30px;
+  padding-right: 30px;
 }
-.modal-body{
+.statTitle{
+  text-align: center;
+  color: rgb(117, 150, 90);
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800;
   font-size: 18px;
+}
+.statSubTitle{
+  text-align: center;
+  color: rgb(117, 150, 90);
+  font-family: 'Cairo', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+.statNum{
+  color: red;
+  text-align: center;
 }
 
 @media screen and (max-width: 990px){
@@ -170,5 +179,11 @@ box-shadow:none;
     display: block;
     text-align: right;
   }
+
+  .statContainer{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
 }
 

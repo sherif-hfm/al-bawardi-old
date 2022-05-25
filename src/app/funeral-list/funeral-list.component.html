@@ -2,7 +2,7 @@
   <div class="cards-container">
     <div class="card main"  >
       <div style="text-align:center"  >
-        <div style="font-size:35px ;margin-top: 10px;">
+        <div style="font-size:35px ;font-weight: 600;margin-top: 10px;">
            <span>{{umalquraCalendar.getCurrentDate().dayName}}</span>
         </div>
         <div style="font-size:25px ;">
@@ -11,7 +11,7 @@
         <div style="font-size:25px ;">
           <span>{{arabicNums.toArabicNum(getCurrentDateV2())}} م</span>
         </div>
-        <div style="font-size:25px ;">
+        <div style="font-size:35px ;">
           <span>{{arabicNums.toArabicNum(prayerTodayTotal)}}</span>
         </div>
         <div style="font-size:25px ;">
@@ -48,31 +48,21 @@
     </div>
   </div>
 </div>
-
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display':detailsDisplayStyle}" style="z-index: 99999999">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">تفاصيل الجنائز</h4>
-      </div>
-      <div class="modal-body">
-        <div *ngFor="let funeral of funeralDetails" style="display:flex;justify-content: space-between;">
-          <div>{{funeral.deadName}}</div>
-          <div>{{funeral.sex.Name}}</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="closeDetailsPopup()">
-          اغلاق
-        </button>
-      </div>
-    </div>
+<modal [(show)]="showdetails">
+<div class="dtlContainer" *ngIf="showdetails">
+  <div class="dtltTitle">
+    <span>تفاصيل الجنائز</span>
   </div>
+  <div style="display:grid;grid-template-columns: 50% 20% 30%;justify-content: space-between;">
+    <ng-container *ngFor="let funeral of funeralDetails">
+      <div>{{funeral.deadName}}</div>
+      <div>{{funeral.sex.Name}}</div>
+      <div>{{funeral.purialPlace.placeName}}</div>
+    </ng-container>
+  </div>
+  <div style="width:300px;height:1px;background-color: rgb(117, 150, 90) ;margin-left: auto;margin-right: auto;margin-top: 10px;margin-bottom: 10px;"></div>
+    <div style="text-align:center ;font-size: 18px;font-weight: bold;color: rgb(117, 150, 90)">
+      رحمهم الله وأسكنهم فسيح جناته
+    </div>
 </div>
-
-
-
+</modal>

@@ -14,7 +14,7 @@ export class FuneralListComponent implements OnInit {
   
   funeralList:any=[];
   funeralDetails:any=[];
-  detailsDisplayStyle = "none";
+    showdetails:boolean=false;
   prayerTodayTotal:any=0;
 
   
@@ -63,8 +63,8 @@ export class FuneralListComponent implements OnInit {
     this.funeralService.getDayDetail(id,this.getCurrentDate()).subscribe({
       next:(data:any)=>{
        console.log(data);
-       this.funeralDetails=data;
-       this.detailsDisplayStyle = "block";
+       this.funeralDetails=data;       
+       this.showdetails=true;
       },
       error:(err:any)=>{
         console.log('http error');
@@ -73,9 +73,7 @@ export class FuneralListComponent implements OnInit {
     });
     
   }
-  closeDetailsPopup() {
-    this.detailsDisplayStyle = "none";
-  }
+ 
 
   
 

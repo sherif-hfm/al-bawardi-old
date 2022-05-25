@@ -16,6 +16,7 @@ import { FuneralDataComponent } from './funeral-data/funeral-data.component';
 
 import { AppHttpInterceptor } from './app-http.interceptor';
 import { AlertComponent } from './alert/alert.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AlertComponent } from './alert/alert.component';
     LoginComponent,
     DatePickerComponent,
     FuneralDataComponent,
-    AlertComponent
+    AlertComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
