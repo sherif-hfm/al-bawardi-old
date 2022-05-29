@@ -53,7 +53,6 @@
         <div *ngIf="mode!='view'" class="editFormContainer" >
             <div class="title">اضافة/تعديل بيانات الجنازة</div>
             <div [formGroup]="funeralFrom" class="editForm">
-                <input type="hidden" formControlName="id">
                 <div class="inputContainer">
                     <label class="inputLable">تاريخ الصلاة</label>
                     <input  class="input" type="text" formControlName="date">
@@ -81,7 +80,7 @@
                     </select>
                 </div>
                 <div class="formButtons">
-                    <button class="btn btn-success" (click)="save()">حفظ</button>
+                    <button class="btn btn-success" [disabled]="funeralFrom.status == 'INVALID'" (click)="save()">حفظ</button>
                     <button class="btn btn-danger" (click)="exit()">خروج</button>
                 </div>
             </div>

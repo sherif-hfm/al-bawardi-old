@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  minheight:number=window.screen.availHeight;
   title = 'al-bawardi';
 }

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
-  private _apiBaseUrl : string="http://localhost:3040" ;
+  // private _apiBaseUrl : string="" ;
   public get ApiBaseUrl() : string {
-    return this._apiBaseUrl;
+    return environment.settings.apiUrl;
   }
   constructor() { }
 }

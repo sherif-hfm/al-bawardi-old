@@ -20,7 +20,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
       next:(e)=>{
       },
       error:(e)=>{
-        if(e.status=401){
+        if(e.status==401){
           this.authService.isAuth=false;
           this.router.navigate(['/login']);
         }

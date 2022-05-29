@@ -19,7 +19,7 @@
                 </div>
                 <div class="formInput">
                     <!-- <label>كلمة المرور</label> -->
-                    <input name="userLogin" type="password" formControlName="password" value="123" placeholder="كلمة المرور">
+                    <input name="userLogin" type="password" formControlName="password" value="123" placeholder="كلمة المرور" (keyup.enter)="login()" >
                 </div>
                 <div class="formInput" style="text-align:right ;">
                     <!-- <label>كلمة المرور</label> -->
